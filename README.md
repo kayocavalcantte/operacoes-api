@@ -1,175 +1,205 @@
-# API de Operações
+Aqui está o arquivo README.md formatado para o seu projeto de API:
 
-Esta é uma API de operações matemáticas desenvolvida em Java utilizando Spring. Ela fornece uma variedade de operações como cálculo de MDC, sequência de Fibonacci, verificação de números primos, ordenação, somatório, entre outros.
+```md
+# Operações API
 
-## Como utilizar a API
+Esta API foi desenvolvida utilizando Spring Boot para realizar diversas operações matemáticas, incluindo cálculo de números primos, Fibonacci, MDC, ordenação e mais.
 
-### Pré-requisitos
+## Endpoints
 
-- [Java 17+](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html)
-- [Maven](https://maven.apache.org/)
+### 1. Contagem de Aprovados
+Calcula o número de alunos aprovados com base em suas notas.
+
+**Endpoint:** `GET /api/operacoes/contagem-aprovados`
+
+**Parâmetros:**
+- `quantidade` (int): Quantidade total de alunos.
+- `notas` (int[]): Array de notas dos alunos.
+
+**Exemplo de Requisição:**
+```bash
+GET /api/operacoes/contagem-aprovados?quantidade=5&notas=70,40,55,60,50
+```
+
+**Exemplo de Resposta:**
+```json
+"Total de alunos: 5, Aprovados: 4"
+```
+
+---
+
+### 2. Sequência de Fibonacci
+Gera uma sequência de Fibonacci com base no número de termos fornecido.
+
+**Endpoint:** `GET /api/operacoes/fibonacci`
+
+**Parâmetros:**
+- `termos` (int): Número de termos da sequência a serem gerados.
+
+**Exemplo de Requisição:**
+```bash
+GET /api/operacoes/fibonacci?termos=10
+```
+
+**Exemplo de Resposta:**
+```json
+"0, 1, 1, 2, 3, 5, 8, 13, 21, 34"
+```
+
+---
+
+### 3. Cálculo do MDC (Máximo Divisor Comum)
+Calcula o MDC de dois números.
+
+**Endpoint:** `GET /api/operacoes/mdc`
+
+**Parâmetros:**
+- `a` (int): Primeiro número.
+- `b` (int): Segundo número.
+
+**Exemplo de Requisição:**
+```bash
+GET /api/operacoes/mdc?a=48&b=18
+```
+
+**Exemplo de Resposta:**
+```json
+"MDC: 6"
+```
+
+---
+
+### 4. Verificar Número Primo
+Verifica se um número é primo.
+
+**Endpoint:** `GET /api/operacoes/numero-primo`
+
+**Parâmetros:**
+- `numero` (int): Número a ser verificado.
+
+**Exemplo de Requisição:**
+```bash
+GET /api/operacoes/numero-primo?numero=7
+```
+
+**Exemplo de Resposta:**
+```json
+"7 é primo"
+```
+
+---
+
+### 5. Ordenação de Vetor
+Ordena um vetor de números inteiros.
+
+**Endpoint:** `POST /api/operacoes/ordenacao`
+
+**Parâmetros:**
+- `vetor` (int[]): Array de números inteiros a serem ordenados.
+
+**Exemplo de Requisição:**
+```bash
+POST /api/operacoes/ordenacao
+Content-Type: application/json
+Body: [3, 5, 1, 4, 2]
+```
+
+**Exemplo de Resposta:**
+```json
+"Vetor ordenado: [1, 2, 3, 4, 5]"
+```
+
+---
+
+### 6. Soma de Vetor
+Calcula a soma de um array de números inteiros.
+
+**Endpoint:** `POST /api/operacoes/somador`
+
+**Parâmetros:**
+- `numeros` (int[]): Array de números inteiros.
+
+**Exemplo de Requisição:**
+```bash
+POST /api/operacoes/somador
+Content-Type: application/json
+Body: [1, 2, 3, 4, 5]
+```
+
+**Exemplo de Resposta:**
+```json
+"Soma total: 15"
+```
+
+---
+
+### 7. Troca de Variáveis
+Troca os valores de duas variáveis.
+
+**Endpoint:** `GET /api/operacoes/troca-variaveis`
+
+**Parâmetros:**
+- `a` (int): Valor da primeira variável.
+- `b` (int): Valor da segunda variável.
+
+**Exemplo de Requisição:**
+```bash
+GET /api/operacoes/troca-variaveis?a=5&b=10
+```
+
+**Exemplo de Resposta:**
+```json
+"A: 10, B: 5"
+```
+
+## Como Executar o Projeto
+
+### Pré-requisitos:
+- [Java 11+](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- [Maven](https://maven.apache.org/download.cgi)
 - [Spring Boot](https://spring.io/projects/spring-boot)
 
-### Instalação
+### Passos para rodar o projeto:
 
 1. Clone o repositório:
    ```bash
    git clone https://github.com/seu-usuario/operacoes-api.git
+   ```
+
+2. Entre na pasta do projeto:
+   ```bash
    cd operacoes-api
+   ```
 
-Compile o projeto usando Maven:
+3. Compile e rode o projeto:
+   ```bash
+   mvn spring-boot:run
+   ```
 
-bash
-Copiar código
-mvn clean install
-Execute a aplicação:
+4. Acesse a API no seguinte endereço:
+   ```
+   http://localhost:8080/api/operacoes
+   ```
 
-bash
-Copiar código
-mvn spring-boot:run
-A aplicação estará disponível em http://localhost:8080/api/operacoes.
+## Tecnologias Utilizadas
 
-Endpoints Disponíveis
-1. Contagem de Aprovados
-Descrição: Calcula quantos alunos foram aprovados com base em suas notas.
-URL: /api/operacoes/contagem-aprovados
-Método: GET
-Parâmetros:
-quantidade (int): Número total de alunos.
-notas (array de int): Notas dos alunos.
-Exemplo de requisição:
-bash
-Copiar código
-GET /api/operacoes/contagem-aprovados?quantidade=5&notas=60,70,80,40,55
-Resposta:
-json
-Copiar código
-{
-  "message": "Total de alunos: 5, Aprovados: 4"
-}
-2. Sequência de Fibonacci
-Descrição: Retorna a sequência de Fibonacci até o número de termos solicitado.
-URL: /api/operacoes/fibonacci
-Método: GET
-Parâmetros:
-termos (int): Número de termos da sequência.
-Exemplo de requisição:
-bash
-Copiar código
-GET /api/operacoes/fibonacci?termos=6
-Resposta:
-json
-Copiar código
-{
-  "message": "0, 1, 1, 2, 3, 5"
-}
-3. Cálculo do MDC (Máximo Divisor Comum)
-Descrição: Calcula o MDC entre dois números.
-URL: /api/operacoes/mdc
-Método: GET
-Parâmetros:
-a (int): Primeiro número.
-b (int): Segundo número.
-Exemplo de requisição:
-css
-Copiar código
-GET /api/operacoes/mdc?a=20&b=30
-Resposta:
-json
-Copiar código
-{
-  "message": "MDC: 10"
-}
-4. Verificação de Número Primo
-Descrição: Verifica se um número é primo.
-URL: /api/operacoes/numero-primo
-Método: GET
-Parâmetros:
-numero (int): Número a ser verificado.
-Exemplo de requisição:
-bash
-Copiar código
-GET /api/operacoes/numero-primo?numero=7
-Resposta:
-json
-Copiar código
-{
-  "message": "7 é primo"
-}
-5. Ordenação de Vetor
-Descrição: Ordena um vetor de inteiros.
-URL: /api/operacoes/ordenacao
-Método: POST
-Corpo da Requisição:
-json
-Copiar código
-{
-  "vetor": [5, 3, 8, 4, 1]
-}
-Exemplo de requisição:
-bash
-Copiar código
-POST /api/operacoes/ordenacao
-{
-  "vetor": [5, 3, 8, 4, 1]
-}
-Resposta:
-json
-Copiar código
-{
-  "message": "Vetor ordenado: [1, 3, 4, 5, 8]"
-}
-6. Somatório de Números
-Descrição: Soma todos os números de um vetor.
-URL: /api/operacoes/somador
-Método: POST
-Corpo da Requisição:
-json
-Copiar código
-{
-  "numeros": [10, 20, 30]
-}
-Exemplo de requisição:
-bash
-Copiar código
-POST /api/operacoes/somador
-{
-  "numeros": [10, 20, 30]
-}
-Resposta:
-json
-Copiar código
-{
-  "message": "Soma total: 60"
-}
-7. Troca de Variáveis
-Descrição: Troca os valores de duas variáveis.
-URL: /api/operacoes/troca-variaveis
-Método: GET
-Parâmetros:
-a (int): Primeiro valor.
-b (int): Segundo valor.
-Exemplo de requisição:
-css
-Copiar código
-GET /api/operacoes/troca-variaveis?a=10&b=20
-Resposta:
-json
-Copiar código
-{
-  "message": "A: 20, B: 10"
-}
-Tecnologias Utilizadas
-Java 17
-Spring Boot
-Maven
-Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou pull request.
+- **Java 11**
+- **Spring Boot**
+- **Maven**
 
-Licença
-Este projeto está licenciado sob a Licença MIT. Para mais detalhes, veja o arquivo LICENSE.
+## Contribuição
 
-perl
-Copiar código
+Contribuições são bem-vindas! Para contribuir com o projeto, siga as etapas abaixo:
 
-Você pode copiar e colar esse conteúdo diretamente no seu arquivo `README.md` no GitHub.
+1. Faça um fork do projeto.
+2. Crie uma nova branch (`git checkout -b feature/nova-funcionalidade`).
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`).
+4. Envie para o repositório remoto (`git push origin feature/nova-funcionalidade`).
+5. Abra um Pull Request.
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+```
+
+Esse README inclui descrições dos endpoints da API, instruções sobre como rodar o projeto e informações sobre contribuição. Ajuste o conteúdo conforme necessário, como o URL do repositório GitHub, se houver.
