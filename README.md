@@ -1,201 +1,147 @@
 # Operações API
 
-Esta API foi desenvolvida utilizando Spring Boot para realizar diversas operações matemáticas, incluindo cálculo de números primos, Fibonacci, MDC, ordenação e mais.
+Esta API foi desenvolvida em Java utilizando o framework Spring. Ela fornece diversas operações matemáticas e lógicas, que podem ser acessadas via endpoints HTTP.
 
 ## Endpoints
 
 ### 1. Contagem de Aprovados
-Calcula o número de alunos aprovados com base em suas notas.
 
-**Endpoint:** `GET /api/operacoes/contagem-aprovados`
-
-**Parâmetros:**
-- `quantidade` (int): Quantidade total de alunos.
-- `notas` (int[]): Array de notas dos alunos.
-
-**Exemplo de Requisição:**
-```bash
-GET /api/operacoes/contagem-aprovados?quantidade=5&notas=70,40,55,60,50
-```
-
-**Exemplo de Resposta:**
-```json
-"Total de alunos: 5, Aprovados: 4"
-```
+- **Método:** `GET`
+- **URL:** `/api/operacoes/contagem-aprovados`
+- **Parâmetros:**
+  - `quantidade` (int): Total de alunos.
+  - `notas` (int[]): Array com as notas dos alunos.
+- **Exemplo de uso:**
+  ```
+  GET /api/operacoes/contagem-aprovados?quantidade=5&notas=60,40,80,30,90
+  ```
+- **Resposta:** `Total de alunos: 5, Aprovados: 3`
 
 
 ### 2. Sequência de Fibonacci
-Gera uma sequência de Fibonacci com base no número de termos fornecido.
 
-**Endpoint:** `GET /api/operacoes/fibonacci`
-
-**Parâmetros:**
-- `termos` (int): Número de termos da sequência a serem gerados.
-
-**Exemplo de Requisição:**
-```bash
-GET /api/operacoes/fibonacci?termos=10
-```
-
-**Exemplo de Resposta:**
-```json
-"0, 1, 1, 2, 3, 5, 8, 13, 21, 34"
-```
+- **Método:** `GET`
+- **URL:** `/api/operacoes/fibonacci`
+- **Parâmetros:**
+  - `termos` (int): Número de termos da sequência a serem gerados.
+- **Exemplo de uso:**
+  ```
+  GET /api/operacoes/fibonacci?termos=5
+  ```
+- **Resposta:** `0, 1, 1, 2, 3`
 
 ---
 
-### 3. Cálculo do MDC (Máximo Divisor Comum)
-Calcula o MDC de dois números.
+### 3. Máximo Divisor Comum (MDC)
 
-**Endpoint:** `GET /api/operacoes/mdc`
-
-**Parâmetros:**
-- `a` (int): Primeiro número.
-- `b` (int): Segundo número.
-
-**Exemplo de Requisição:**
-```bash
-GET /api/operacoes/mdc?a=48&b=18
-```
-
-**Exemplo de Resposta:**
-```json
-"MDC: 6"
-```
+- **Método:** `GET`
+- **URL:** `/api/operacoes/mdc`
+- **Parâmetros:**
+  - `a` (int): Primeiro número.
+  - `b` (int): Segundo número.
+- **Exemplo de uso:**
+  ```
+  GET /api/operacoes/mdc?a=48&b=18
+  ```
+- **Resposta:** `MDC: 6`
 
 ---
 
-### 4. Verificar Número Primo
-Verifica se um número é primo.
+### 4. Verificação de Número Primo
 
-**Endpoint:** `GET /api/operacoes/numero-primo`
-
-**Parâmetros:**
-- `numero` (int): Número a ser verificado.
-
-**Exemplo de Requisição:**
-```bash
-GET /api/operacoes/numero-primo?numero=7
-```
-
-**Exemplo de Resposta:**
-```json
-"7 é primo"
-```
+- **Método:** `GET`
+- **URL:** `/api/operacoes/numero-primo`
+- **Parâmetros:**
+  - `numero` (int): Número a ser verificado.
+- **Exemplo de uso:**
+  ```
+  GET /api/operacoes/numero-primo?numero=7
+  ```
+- **Resposta:** `7 é primo`
 
 ---
 
 ### 5. Ordenação de Vetor
-Ordena um vetor de números inteiros.
 
-**Endpoint:** `POST /api/operacoes/ordenacao`
-
-**Parâmetros:**
-- `vetor` (int[]): Array de números inteiros a serem ordenados.
-
-**Exemplo de Requisição:**
-```bash
-POST /api/operacoes/ordenacao
-Content-Type: application/json
-Body: [3, 5, 1, 4, 2]
-```
-
-**Exemplo de Resposta:**
-```json
-"Vetor ordenado: [1, 2, 3, 4, 5]"
-```
+- **Método:** `POST`
+- **URL:** `/api/operacoes/ordenacao`
+- **Corpo da Requisição:**
+  ```json
+  {
+      "vetor": [5, 3, 8, 1]
+  }
+  ```
+- **Exemplo de uso:**
+  ```
+  POST /api/operacoes/ordenacao
+  ```
+- **Resposta:** `Vetor ordenado: [1, 3, 5, 8]`
 
 ---
 
-### 6. Soma de Vetor
-Calcula a soma de um array de números inteiros.
+### 6. Somador
 
-**Endpoint:** `POST /api/operacoes/somador`
-
-**Parâmetros:**
-- `numeros` (int[]): Array de números inteiros.
-
-**Exemplo de Requisição:**
-```bash
-POST /api/operacoes/somador
-Content-Type: application/json
-Body: [1, 2, 3, 4, 5]
-```
-
-**Exemplo de Resposta:**
-```json
-"Soma total: 15"
-```
+- **Método:** `POST`
+- **URL:** `/api/operacoes/somador`
+- **Corpo da Requisição:**
+  ```json
+  {
+      "numeros": [1, 2, 3, 4]
+  }
+  ```
+- **Exemplo de uso:**
+  ```
+  POST /api/operacoes/somador
+  ```
+- **Resposta:** `Soma total: 10`
 
 ---
 
 ### 7. Troca de Variáveis
-Troca os valores de duas variáveis.
 
-**Endpoint:** `GET /api/operacoes/troca-variaveis`
+- **Método:** `GET`
+- **URL:** `/api/operacoes/troca-variaveis`
+- **Parâmetros:**
+  - `a` (int): Primeiro número.
+  - `b` (int): Segundo número.
+- **Exemplo de uso:**
+  ```
+  GET /api/operacoes/troca-variaveis?a=5&b=10
+  ```
+- **Resposta:** `A: 10, B: 5`
 
-**Parâmetros:**
-- `a` (int): Valor da primeira variável.
-- `b` (int): Valor da segunda variável.
+---
 
-**Exemplo de Requisição:**
-```bash
-GET /api/operacoes/troca-variaveis?a=5&b=10
-```
+## Configuração
 
-**Exemplo de Resposta:**
-```json
-"A: 10, B: 5"
-```
+Para rodar a API, você precisa ter o [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) e o [Maven](https://maven.apache.org/download.cgi) instalados em sua máquina. 
 
-## Como Executar o Projeto
+### Executando a Aplicação
 
-### Pré-requisitos:
-- [Java 11+](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
-- [Maven](https://maven.apache.org/download.cgi)
-- [Spring Boot](https://spring.io/projects/spring-boot)
-
-### Passos para rodar o projeto:
-
-1. Clone o repositório:
+1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/operacoes-api.git
+   git clone <URL-do-repositório>
    ```
 
-2. Entre na pasta do projeto:
+2. Navegue até a pasta do projeto:
    ```bash
-   cd operacoes-api
+   cd operacoes_api
    ```
 
-3. Compile e rode o projeto:
+3. Execute o comando Maven para iniciar a aplicação:
    ```bash
    mvn spring-boot:run
    ```
 
-4. Acesse a API no seguinte endereço:
-   ```
-   http://localhost:8080/api/operacoes
-   ```
-
-## Tecnologias Utilizadas
-
-- **Java 11**
-- **Spring Boot**
-- **Maven**
+A aplicação estará disponível em `http://localhost:8080`.
 
 ## Contribuição
 
-Contribuições são bem-vindas! Para contribuir com o projeto, siga as etapas abaixo:
-
-1. Faça um fork do projeto.
-2. Crie uma nova branch (`git checkout -b feature/nova-funcionalidade`).
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`).
-4. Envie para o repositório remoto (`git push origin feature/nova-funcionalidade`).
-5. Abra um Pull Request.
+Sinta-se à vontade para contribuir com melhorias ou correções. Para isso, faça um fork do repositório e envie um pull request.
 
 ## Licença
 
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Este projeto está licenciado sob a [MIT License](LICENSE).
 ```
 
-Esse README inclui descrições dos endpoints da API, instruções sobre como rodar o projeto e informações sobre contribuição. Ajuste o conteúdo conforme necessário, como o URL do repositório GitHub, se houver.
+Sinta-se à vontade para personalizar o README conforme necessário! Se precisar de mais informações ou ajustes, é só avisar.
