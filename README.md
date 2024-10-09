@@ -1,6 +1,3 @@
-Aqui está o arquivo README.md formatado para o seu projeto de API:
-
-```md
 # Operações API
 
 Esta API foi desenvolvida utilizando Spring Boot para realizar diversas operações matemáticas, incluindo cálculo de números primos, Fibonacci, MDC, ordenação e mais.
@@ -26,7 +23,6 @@ GET /api/operacoes/contagem-aprovados?quantidade=5&notas=70,40,55,60,50
 "Total de alunos: 5, Aprovados: 4"
 ```
 
----
 
 ### 2. Sequência de Fibonacci
 Gera uma sequência de Fibonacci com base no número de termos fornecido.
